@@ -56,15 +56,14 @@ for branch in branches_coordinate:
 
 screen.blit(tree_surface, (0, 0))
 
-nx_2 = 0.333    # коэффициент сжатия для 2 пальмы
-ny_2 = 0.716
-x_tree_2 = 279  # координаты ствола 2 пальмы
-y_tree_2 = 382
-tree_surf_2 = pygame.Surface(SIZE, pygame.SRCALPHA)
-trunk_2 = pygame.transform.scale(tree_surface, (X * nx_2, Y * ny_2))
-crown_2: Surface | SurfaceType = pygame.transform.scale(crown_serf, (X * nx_2, Y * ny_2))
-screen.blit(trunk_2, (x_tree_2 - X_tree * nx_2, y_tree_2 - Y_tree * ny_2))
-screen.blit(crown_2, (x_tree_2 - X_tree * nx_2, y_tree_2 - Y_tree * ny_2))
+transformation_ratios = [(0.407, 0.6, 111, 378), (0.333, 0.716, 279, 382), (0.45, 0.875, 720, 350)]
+for ratio in transformation_ratios:
+    nx, ny, x_tree, y_tree = ratio
+    tree_surf = pygame.Surface(SIZE, pygame.SRCALPHA)
+    transformed_tunk = pygame.transform.scale(tree_surface, (X * nx, Y * ny))
+    transformed_crown: Surface | SurfaceType = pygame.transform.scale(crown_serf, (X * nx, Y * ny))
+    screen.blit(transformed_tunk, (x_tree - X_tree * nx, y_tree - Y_tree * ny))
+    screen.blit(transformed_crown, (x_tree - X_tree * nx, y_tree - Y_tree * ny))
 
 panda_surf_1 = pygame.image.load('panda.bmp')
 panda_rect = panda_surf_1.get_rect(center=(568, 339))
