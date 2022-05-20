@@ -6,8 +6,8 @@ from pygame.surface import Surface, SurfaceType
 pygame.init()
 FPS = 30
 
-ORANGE = (227, 176, 137)
-GREEN = (58, 101, 64)
+ORANGE = (243, 178, 135)
+GREEN = (43, 102, 60)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
@@ -66,8 +66,12 @@ for ratio in transformation_ratios:
     screen.blit(transformed_crown, (x_tree - X_tree * nx, y_tree - Y_tree * ny))
 
 panda_surf_1 = pygame.image.load('panda.bmp')
-panda_rect = panda_surf_1.get_rect(center=(568, 339))
-screen.blit(panda_surf_1, panda_rect)
+panda_rect_1 = panda_surf_1.get_rect(center=(568, 339))
+screen.blit(panda_surf_1, panda_rect_1)
+
+panda_surf_2 = pygame.image.load('baby_panda.bmp')
+panda_rect_2 = pygame.transform.scale(panda_surf_2, (126, 98))
+screen.blit(panda_rect_2, (335, 385))
 
 
 pygame.display.update()
