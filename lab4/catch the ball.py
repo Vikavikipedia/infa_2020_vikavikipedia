@@ -1,23 +1,26 @@
 import pygame, sys, time
 
-from pygame.draw import *
+import math
 from random import randint
 from pygame.locals import *
 
 
 pygame.init()    # установка pygame
 
-FPS = 1
+FPS = 20
 WINDOWHEIGHT = 600
 WINDOWWIDTH = 600
 screen = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
 score = 0
+# итератор для обозначения номера шарика
+i = 0
 
 # создание переменных направления
 DOWNLEFT = 'downleft'
 DOWNRIGHT = 'downright'
 UPLEFT = 'upleft'
 UPRIGHT = 'upright'
+DIRECTIONS = [DOWNLEFT, DOWNRIGHT, UPLEFT, UPRIGHT]
 # скорость движения
 MOVESPEED = 3
 # назначение цветов
@@ -31,79 +34,32 @@ BLACK = (0, 0, 0)
 # создается список цветов
 COLORS = [RED, BLUE, YELLOW, GREEN, MAGENTA, CYAN]
 
+balls = []
 
-def new_balls():
+def new_ball():
     """
     Function draws a new ball
     :param: x: x coordinate of the center of the ball
     :param: y: x coordinate of the center of the ball
     :param: r: the ball's radius
     :param: color: random color from the list of colors
+    :param: direction: random direction from the list of directions
     :return: None
     """
-    global x_1, x_2, x_3, y_1, y_2, y_3, r_1, r_2, r_3
-    x_1 = randint(100, 700)
-    y_1 = randint(100, 700)
-    r_1 = randint(10, 100)
-    color_1 = COLORS[randint(0, 5)]
-    ball_1 = dict(circle=circle(screen, color_1, (x_1, y_1), r_1),color=color_1, dir=UPRIGHT)
-    x_2 = randint(100, 700)
-    y_2 = randint(100, 700)
-    r_2 = randint(10, 100)
-    color_2 = COLORS[randint(0, 5)]
-    ball_2 = dict(circle=circle(screen, color_2, (x_2, y_2), r_2),color=color_2, dir=UPLEFT)
-    x_3 = randint(100, 700)
-    y_3 = randint(100, 700)
-    r_3 = randint(10, 100)
-    color_3 = COLORS[randint(0, 5)]
-    ball_3 = dict(circle=circle(screen, color_3, (x_3, y_3), r_3),color=color_3, dir=DOWNLEFT)
-
+    global x, y, r
+    x = randint(100, 500)
+    y = randint(100, 500)
+    r = randint(10, 100)
+    color = COLORS[randint(0, 5)]
+    direction = DIRECTIONS[randint(0,3)]
+    ball = dict(rect=pygame.Rect(x, y, r, r), color=color, dir=direction, x=x, y=y, rad=r)
+    balls.append(ball)
 
 def move_ball():
     """
     Function makes the ball move in a random direction
     :return: None
     """
-
-
-def click(event):
-    """
-    Function prints coordinates and radius of current circle
-    :return: None
-    """
-    print(x, y, r)
-
-
-pygame.display.update()    # отображение окна на экране
-clock = pygame.time.Clock()
-finished = False    # значение по умолчанию - программа продолжается
-
-#user_name = input('Enter user_name: ')    # ввод имени игрока
-
-x_1 = randint(100, 500)
-y_1 = randint(100, 500)
-r_1 = randint(10, 100)
-color_1 = COLORS[randint(0, 5)]
-ball_1 = dict(rect=pygame.Rect(x_1, y_1, r_1, r_1), color=color_1, dir=UPRIGHT, x=x_1, y=y_1, rad=r_1)
-x_2 = randint(100, 500)
-y_2 = randint(100, 500)
-r_2 = randint(10, 100)
-color_2 = COLORS[randint(0, 5)]
-ball_2 = dict(rect=pygame.Rect(x_2, y_2, r_2, r_2), color=color_2, dir=UPLEFT, x=x_2, y=y_2, rad=r_2)
-x_3 = randint(100, 500)
-y_3 = randint(100, 500)
-r_3 = randint(10, 100)
-color_3 = COLORS[randint(0, 5)]
-ball_3 = dict(rect=pygame.Rect(x_3, y_3, r_3, r_3), color=color_3, dir=DOWNLEFT, x=x_3, y=y_3, rad=r_3)
-
-balls = [ball_1, ball_2, ball_3]
-
-while True:
-    for event in pygame.event.get():
-        if event.type == QUIT:
-            pygame.quit()
-            sys.exit()
-    screen.fill(BLACK)
     for ball in balls:
         if ball['dir'] == DOWNLEFT:
             ball['rect'].left -= MOVESPEED
@@ -137,28 +93,50 @@ while True:
                 ball['dir'] = DOWNLEFT
             if ball['dir'] == UPRIGHT:
                 ball['dir'] = UPLEFT
-        pygame.draw.ellipse(screen, ball['color'], ball['rect'])
+
+def click(event):
+    """
+    Function prints coordinates and radius of current circle
+    :return: None
+    """
+    print(x, y, r)
+
+
+pygame.display.update()    # отображение окна на экране
+clock = pygame.time.Clock()
+finished = False    # значение по умолчанию - программа продолжается
+
+#user_name = input('Enter user_name: ')    # ввод имени игрока
+
+new_ball()
+
+while not finished:
+    clock.tick(FPS)
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            finished = True
+        elif event.type == pygame.MOUSEBUTTONDOWN:  # если нажата кнопка мыши
+            print('Click!')  # печать слова Click в консоли
+            click(event)  # печать координат текущего мяча
+            event.x, event.y = event.pos  # получение координат клика мыши
+            for ball in balls:
+                if (math.sqrt((event.x - x) ** 2 + (event.y - y) ** 2) < r):
+                    score += 1  # увеличение счета на 1 и печать текущего счета в консоли
+                    print('score:', score)
+                    balls.pop(i)
+                    i += 1
+            i = 0
+            new_ball()
+        screen.fill(BLACK)
+        for ball in balls:
+            move_ball()
+            pygame.draw.ellipse(screen, ball['color'], ball['rect'])
     pygame.display.update()
-    time.sleep(0.02)
+print('Total score:', score)
+pygame.quit()
 
-'''    
-        elif event.type == pygame.MOUSEBUTTONDOWN:     # если нажата кнопка мыши
-            print('Click!')    # печать слова Click в консоли
-            click(event)    # печать координат текущего мяча
-            event.x, event.y = event.pos    # получение координат клика мыши
-            if (math.sqrt((event.x - x_1) ** 2 + (event.y - y_1) ** 2) < r_1
-                or math.sqrt((event.x - x_2) ** 2 + (event.y - y_2) ** 2) < r_2
-                or math.sqrt((event.x - x_3) ** 2 + (event.y - y_3) ** 2) < r_3):    # если клик мыщи попал в мяч
-                score += 1    # увеличение счета на 1 и печать текущего счета в консоли
-                print('score:', score)
-
-    #new_balls()
-#рисование нового мяча
-pygame.display.update()     # отображение окна на экране
-# Заливка экрана черным для удаления прерыдущего шарика
-screen.fill(BLACK)
-
-print('Total score:', score)    # печать общего счета игры в консоль
+'''
+'# печать общего счета игры в консоль
 Total_score = str(score)    # перевод счета из типа int в string
 output_score = open('Player table.txt', 'a')    # открытие файла на добавление новых данных
 string = [user_name, ' - ', Total_score, ' points', '\n']    # создание строки для вывода в файл
