@@ -7,7 +7,7 @@ from pygame.locals import *
 
 pygame.init()    # установка pygame
 
-FPS = 20
+FPS = 5
 WINDOWHEIGHT = 600
 WINDOWWIDTH = 600
 screen = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
@@ -60,46 +60,38 @@ def move_ball():
     Function makes the ball move in a random direction
     :return: None
     """
-    for ball in balls:
-        if ball['dir'] == DOWNLEFT:
-            ball['rect'].left -= MOVESPEED
-            ball['rect'].top += MOVESPEED
-        if ball['dir'] == DOWNRIGHT:
-            ball['rect'].left += MOVESPEED
-            ball['rect'].top += MOVESPEED
+    if ball['dir'] == DOWNLEFT:
+        ball['rect'].left -= MOVESPEED
+        ball['rect'].top += MOVESPEED
+    if ball['dir'] == DOWNRIGHT:
+        ball['rect'].left += MOVESPEED
+        ball['rect'].top += MOVESPEED
+    if ball['dir'] == UPLEFT:
+        ball['rect'].left -= MOVESPEED
+        ball['rect'].top -= MOVESPEED
+    if ball['dir'] == UPRIGHT:
+        ball['rect'].left += MOVESPEED
+        ball['rect'].top -= MOVESPEED
+    if ball['rect'].top < 0:
         if ball['dir'] == UPLEFT:
-            ball['rect'].left -= MOVESPEED
-            ball['rect'].top -= MOVESPEED
+            ball['dir'] = DOWNLEFT
         if ball['dir'] == UPRIGHT:
-            ball['rect'].left += MOVESPEED
-            ball['rect'].top -= MOVESPEED
-        if ball['rect'].top < 0:
-            if ball['dir'] == UPLEFT:
-                ball['dir'] = DOWNLEFT
-            if ball['dir'] == UPRIGHT:
-                ball['dir'] = DOWNRIGHT
-        if ball['rect'].bottom > WINDOWHEIGHT:
-            if ball['dir'] == DOWNLEFT:
-                ball['dir'] = UPLEFT
-            if ball['dir'] == DOWNRIGHT:
-                ball['dir'] = UPRIGHT
-        if ball['rect'].left < 0:
+            ball['dir'] = DOWNRIGHT
+    if ball['rect'].bottom > WINDOWHEIGHT:
+        if ball['dir'] == DOWNLEFT:
+            ball['dir'] = UPLEFT
+        if ball['dir'] == DOWNRIGHT:
+            ball['dir'] = UPRIGHT
+    if ball['rect'].left < 0:
             if ball['dir'] == DOWNLEFT:
                 ball['dir'] = DOWNRIGHT
             if ball['dir'] == UPLEFT:
                 ball['dir'] = UPRIGHT
-        if ball['rect'].right > WINDOWWIDTH:
+    if ball['rect'].right > WINDOWWIDTH:
             if ball['dir'] == DOWNRIGHT:
                 ball['dir'] = DOWNLEFT
             if ball['dir'] == UPRIGHT:
                 ball['dir'] = UPLEFT
-
-def click(event):
-    """
-    Function prints coordinates and radius of current circle
-    :return: None
-    """
-    print(x, y, r)
 
 
 pygame.display.update()    # отображение окна на экране
@@ -109,28 +101,26 @@ finished = False    # значение по умолчанию - програм�
 #user_name = input('Enter user_name: ')    # ввод имени игрока
 
 new_ball()
-
+catched_balls = []
 while not finished:
     clock.tick(FPS)
     for event in pygame.event.get():
         if event.type == QUIT:
             finished = True
         elif event.type == pygame.MOUSEBUTTONDOWN:  # если нажата кнопка мыши
-            print('Click!')  # печать слова Click в консоли
-            click(event)  # печать координат текущего мяча
+            print('Click!')  # печать слова Click в консоли # печать координат текущего мяча
             event.x, event.y = event.pos  # получение координат клика мыши
             for ball in balls:
-                if (math.sqrt((event.x - x) ** 2 + (event.y - y) ** 2) < r):
-                    score += 1  # увеличение счета на 1 и печать текущего счета в консоли
+                if (math.sqrt((event.x - ball['x']) ** 2 + (event.y - ball['y']) ** 2) < ball['rad']):
+                    score += 1
                     print('score:', score)
-                    balls.pop(i)
-                    i += 1
-            i = 0
+                    print(balls.index(ball))
+                    balls.pop(balls.index(ball))
             new_ball()
-        screen.fill(BLACK)
-        for ball in balls:
-            move_ball()
-            pygame.draw.ellipse(screen, ball['color'], ball['rect'])
+    screen.fill(BLACK)
+    for ball in balls:
+        move_ball()
+        pygame.draw.ellipse(screen, ball['color'], ball['rect'])
     pygame.display.update()
 print('Total score:', score)
 pygame.quit()
