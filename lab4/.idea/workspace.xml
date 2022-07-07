@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a246c030-ba3f-4573-9e07-e059c9f8fd8b" name="Changes" comment="Made some moving balls that change their direction when they collide with the screen borders">
+    <list default="true" id="a246c030-ba3f-4573-9e07-e059c9f8fd8b" name="Changes" comment="Made some moving balls that change their direction when they collide with the screen borders and if you clik on a ball, it will vanish. But this function works bad">
       <change afterPath="$PROJECT_DIR$/homework example.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/list popping try.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab3/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catch the ball.py" beforeDir="false" afterPath="$PROJECT_DIR$/catch the ball.py" afterDir="false" />
@@ -66,27 +67,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Ex 2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="lab4" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Documents/Python/PyCharm/Хирьянов.Python/Lect2" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$USER_HOME$/Documents/Python/PyCharm/Хирьянов.Python/Lect2/Ex 2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="book example" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="lab4" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -121,6 +101,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/catch the ball.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="list popping try" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="lab4" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/list popping try.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -174,10 +175,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.catch the ball" />
+        <item itemvalue="Python.list popping try" />
         <item itemvalue="Python.book example" />
         <item itemvalue="Python.movind ball try" />
         <item itemvalue="Python.Ex 1" />
-        <item itemvalue="Python.Ex 2" />
       </list>
     </recent_temporary>
   </component>
@@ -232,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657129431999</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Made some moving balls that change their direction when they collide with the screen borders and if you clik on a ball, it will vanish. But this function works bad">
+      <created>1657196664506</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1657196664506</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -253,7 +261,8 @@
     <MESSAGE value="Function new_ball draws new circles, Total score of players is written to a file" />
     <MESSAGE value="Made three moving balls that change their direction when they collide with the screen borders" />
     <MESSAGE value="Made some moving balls that change their direction when they collide with the screen borders" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made some moving balls that change their direction when they collide with the screen borders" />
+    <MESSAGE value="Made some moving balls that change their direction when they collide with the screen borders and if you clik on a ball, it will vanish. But this function works bad" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made some moving balls that change their direction when they collide with the screen borders and if you clik on a ball, it will vanish. But this function works bad" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

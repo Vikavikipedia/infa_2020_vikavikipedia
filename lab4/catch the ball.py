@@ -1,29 +1,28 @@
-import pygame, sys, time
-
+import random
+import pygame
 import math
+
 from random import randint
 from pygame.locals import *
 
 
-pygame.init()    # установка pygame
+pygame.init()
 
-FPS = 5
+FPS = 10
 WINDOWHEIGHT = 600
 WINDOWWIDTH = 600
 screen = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
+# Initial count value
 score = 0
-# итератор для обозначения номера шарика
-i = 0
 
-# создание переменных направления
 DOWNLEFT = 'downleft'
 DOWNRIGHT = 'downright'
 UPLEFT = 'upleft'
 UPRIGHT = 'upright'
 DIRECTIONS = [DOWNLEFT, DOWNRIGHT, UPLEFT, UPRIGHT]
-# скорость движения
-MOVESPEED = 3
-# назначение цветов
+
+MOVESPEED = 1
+
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
@@ -31,19 +30,19 @@ GREEN = (0, 255, 0)
 MAGENTA = (255, 0, 255)
 CYAN = (0, 255, 255)
 BLACK = (0, 0, 0)
-# создается список цветов
 COLORS = [RED, BLUE, YELLOW, GREEN, MAGENTA, CYAN]
 
 balls = []
+cubes = []
 
 def new_ball():
     """
-    Function draws a new ball
-    :param: x: x coordinate of the center of the ball
-    :param: y: x coordinate of the center of the ball
-    :param: r: the ball's radius
-    :param: color: random color from the list of colors
-    :param: direction: random direction from the list of directions
+    Function draws a new ball and appends it to the list of balls
+    x: x coordinate of the center of the ball
+    y: y coordinate of the center of the ball
+    r: the ball's radius
+    color: random color from the list of colors
+    direction: random direction from the list of directions
     :return: None
     """
     global x, y, r
@@ -55,23 +54,52 @@ def new_ball():
     ball = dict(rect=pygame.Rect(x, y, r, r), color=color, dir=direction, x=x, y=y, rad=r)
     balls.append(ball)
 
+def new_cube():
+    """
+    Function draws a new cube and appends it to the list of cubes
+    a: x coordinate of the left bottom corner of the cube
+    b: y coordinate of the left bottom corner of the cube
+    w: full width of the cube
+    h: full height of the cube
+    color: random color from the list of colors
+    direction: random direction from the list of directions
+    :return: None
+    """
+    global a, b, w, h
+    a = randint(100, 500)
+    b = randint(100, 500)
+    w = randint(10, 100)
+    h = randint(10, 100)
+    cube_color = COLORS[randint(0, 5)]
+    cube_direction = DIRECTIONS[randint(0,3)]
+    cube = dict(rect=pygame.Rect(a, b, w, h), color=cube_color, dir=cube_direction, x=a, y=b, w=w, h=h)
+    cubes.append(cube)
+
 def move_ball():
     """
-    Function makes the ball move in a random direction
+    Function makes the ball move. The ball bounces off the wall when it hits it
     :return: None
     """
     if ball['dir'] == DOWNLEFT:
         ball['rect'].left -= MOVESPEED
+        ball['x'] += MOVESPEED
         ball['rect'].top += MOVESPEED
+        ball['y'] -= MOVESPEED
     if ball['dir'] == DOWNRIGHT:
         ball['rect'].left += MOVESPEED
+        ball['x'] -= MOVESPEED
         ball['rect'].top += MOVESPEED
+        ball['y'] -= MOVESPEED
     if ball['dir'] == UPLEFT:
         ball['rect'].left -= MOVESPEED
+        ball['x'] += MOVESPEED
         ball['rect'].top -= MOVESPEED
+        ball['y'] += MOVESPEED
     if ball['dir'] == UPRIGHT:
         ball['rect'].left += MOVESPEED
+        ball['x'] -= MOVESPEED
         ball['rect'].top -= MOVESPEED
+        ball['y'] += MOVESPEED
     if ball['rect'].top < 0:
         if ball['dir'] == UPLEFT:
             ball['dir'] = DOWNLEFT
@@ -93,6 +121,51 @@ def move_ball():
             if ball['dir'] == UPRIGHT:
                 ball['dir'] = UPLEFT
 
+def move_cube():
+    """
+    Function makes the cube move. The cube bounces off the wall when it hits it
+    :return: None
+    """
+    if cube['dir'] == DOWNLEFT:
+        cube['rect'].left -= MOVESPEED
+        cube['rect'].top += MOVESPEED
+    if cube['dir'] == DOWNRIGHT:
+        cube['rect'].left += MOVESPEED
+        cube['rect'].top += MOVESPEED
+    if cube['dir'] == UPLEFT:
+        cube['rect'].left -= MOVESPEED
+        cube['rect'].top -= MOVESPEED
+    if cube['dir'] == UPRIGHT:
+        cube['rect'].left += MOVESPEED
+        cube['rect'].top -= MOVESPEED
+    if cube['rect'].top < 0:
+        if cube['dir'] == UPLEFT:
+            cube['dir'] = DOWNLEFT
+        if cube['dir'] == UPRIGHT:
+            cube['dir'] = DOWNRIGHT
+    if cube['rect'].bottom > WINDOWHEIGHT:
+        if cube['dir'] == DOWNLEFT:
+            cube['dir'] = UPLEFT
+        if cube['dir'] == DOWNRIGHT:
+            cube['dir'] = UPRIGHT
+    if cube['rect'].left < 0:
+            if cube['dir'] == DOWNLEFT:
+                cube['dir'] = DOWNRIGHT
+            if cube['dir'] == UPLEFT:
+                cube['dir'] = UPRIGHT
+    if cube['rect'].right > WINDOWWIDTH:
+            if cube['dir'] == DOWNRIGHT:
+                cube['dir'] = DOWNLEFT
+            if cube['dir'] == UPRIGHT:
+                cube['dir'] = UPLEFT
+
+
+def click(event):
+    """"
+    Function prints values of variables
+    """
+    print(x, y, r, r)
+    print(a, b, w, h)
 
 pygame.display.update()    # отображение окна на экране
 clock = pygame.time.Clock()
@@ -101,7 +174,7 @@ finished = False    # значение по умолчанию - програм�
 #user_name = input('Enter user_name: ')    # ввод имени игрока
 
 new_ball()
-catched_balls = []
+new_cube()
 while not finished:
     clock.tick(FPS)
     for event in pygame.event.get():
@@ -110,27 +183,38 @@ while not finished:
         elif event.type == pygame.MOUSEBUTTONDOWN:  # если нажата кнопка мыши
             print('Click!')  # печать слова Click в консоли # печать координат текущего мяча
             event.x, event.y = event.pos  # получение координат клика мыши
+            click(event)
             for ball in balls:
                 if (math.sqrt((event.x - ball['x']) ** 2 + (event.y - ball['y']) ** 2) < ball['rad']):
                     score += 1
                     print('score:', score)
-                    print(balls.index(ball))
+#                    print(ball)
                     balls.pop(balls.index(ball))
-            new_ball()
+            for cube in cubes:
+                if ((event.x < cube['x'] or event.x > (cube['x']+cube['w'])) and
+                        (event.y > cube['y'] or event.y < (cube['y']-cube['h']))):
+                    score += 3
+                    print('score:', score)
+#                    print(cube)
+                    cubes.pop(cubes.index(cube))
+            choise = random.randint(0,1)
+            if choise == 0:
+                new_ball()
+            else:
+                new_cube()
     screen.fill(BLACK)
     for ball in balls:
         move_ball()
         pygame.draw.ellipse(screen, ball['color'], ball['rect'])
+    for cube in cubes:
+        move_cube()
+        pygame.draw.rect(screen, cube['color'], cube['rect'])
     pygame.display.update()
-print('Total score:', score)
-pygame.quit()
 
-'''
-'# печать общего счета игры в консоль
-Total_score = str(score)    # перевод счета из типа int в string
-output_score = open('Player table.txt', 'a')    # открытие файла на добавление новых данных
-string = [user_name, ' - ', Total_score, ' points', '\n']    # создание строки для вывода в файл
-output_score.writelines(string)    # печать строки в файл
-output_score.close()    # закрытие файла
-'''
-#pygame.quit()    # завершение работы pygame
+print('Total score:', score)
+Total_score = str(score)
+#output_score = open('Player table.txt', 'a')
+#string = [user_name, ' - ', Total_score, ' points', '\n']
+#output_score.writelines(string)
+#output_score.close()
+pygame.quit()
