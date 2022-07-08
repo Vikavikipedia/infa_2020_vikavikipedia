@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a246c030-ba3f-4573-9e07-e059c9f8fd8b" name="Changes" comment="Made some moving balls and cubes that change their direction when they collide with the screen borders and if you click on it, it will vanish. The ser name and score are stored in a file">
+    <list default="true" id="a246c030-ba3f-4573-9e07-e059c9f8fd8b" name="Changes" comment="Now rectangles shrink">
       <change afterPath="$PROJECT_DIR$/homework example.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab3/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -261,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657266684760</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Now rectangles shrink">
+      <created>1657278849112</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1657278849112</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -286,7 +293,8 @@
     <MESSAGE value="Made some moving balls and cubes that change their direction when they collide with the screen borders and if you click on it, it will vanish. But this function works bad" />
     <MESSAGE value="Made some moving balls and cubes that change their direction when they collide with the screen borders and if you click on it, it will vanish. And now it works good" />
     <MESSAGE value="Made some moving balls and cubes that change their direction when they collide with the screen borders and if you click on it, it will vanish. The ser name and score are stored in a file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made some moving balls and cubes that change their direction when they collide with the screen borders and if you click on it, it will vanish. The ser name and score are stored in a file" />
+    <MESSAGE value="Now rectangles shrink" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now rectangles shrink" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

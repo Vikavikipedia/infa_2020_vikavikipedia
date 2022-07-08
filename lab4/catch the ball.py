@@ -18,8 +18,12 @@ DOWNLEFT = 'downleft'
 DOWNRIGHT = 'downright'
 UPLEFT = 'upleft'
 UPRIGHT = 'upright'
+UP = 'top'
+DOWN = 'bottom'
+LEFT = 'left'
+RIGHT = 'right'
 DIRECTIONS = [DOWNLEFT, DOWNRIGHT, UPLEFT, UPRIGHT]
-
+VECTOR = [UP, DOWN, LEFT, RIGHT]
 MOVESPEED = 1
 
 RED = (255, 0, 0)
@@ -50,7 +54,7 @@ def new_ball():
     r = randint(10, 100)
     color = COLORS[randint(0, 5)]
     direction = DIRECTIONS[randint(0,3)]
-    ball = dict(rect=pygame.Rect(x, y, r, r), color=color, dir=direction, x=x, y=y, rad=r)
+    ball = dict(rect=pygame.Rect(x, y, r, r), color=color, dir=direction)
     balls.append(ball)
 
 def new_cube():
@@ -70,8 +74,8 @@ def new_cube():
     w = randint(10, 100)
     h = randint(10, 100)
     cube_color = COLORS[randint(0, 5)]
-    cube_direction = DIRECTIONS[randint(0,3)]
-    cube = dict(rect=pygame.Rect(a, b, w, h), color=cube_color, dir=cube_direction, x=a, y=b, w=w, h=h)
+    vector = VECTOR[randint(0,3)]
+    cube = dict(rect=pygame.Rect(a, b, w, h), color=cube_color, dir=vector)
     cubes.append(cube)
 
 def move_ball():
@@ -117,38 +121,39 @@ def move_cube():
     Function makes the cube move. The cube bounces off the wall when it hits it
     :return: None
     """
-    if cube['dir'] == DOWNLEFT:
-        cube['rect'].left -= MOVESPEED
-        cube['rect'].top += MOVESPEED
-    if cube['dir'] == DOWNRIGHT:
-        cube['rect'].left += MOVESPEED
-        cube['rect'].top += MOVESPEED
-    if cube['dir'] == UPLEFT:
-        cube['rect'].left -= MOVESPEED
-        cube['rect'].top -= MOVESPEED
-    if cube['dir'] == UPRIGHT:
-        cube['rect'].left += MOVESPEED
-        cube['rect'].top -= MOVESPEED
+    if cube['dir'] == DOWN:
+            cube['rect'].top += 2 * MOVESPEED
+    if cube['dir'] == UP:
+            cube['rect'].top -= 2 * MOVESPEED
+    if cube['dir'] == LEFT:
+            cube['rect'].left -= 2*MOVESPEED
+    if cube['dir'] == RIGHT:
+            cube['rect'].left += 2*MOVESPEED
     if cube['rect'].top < 0:
-        if cube['dir'] == UPLEFT:
-            cube['dir'] = DOWNLEFT
-        if cube['dir'] == UPRIGHT:
-            cube['dir'] = DOWNRIGHT
+        cube['dir'] = DOWN
     if cube['rect'].bottom > WINDOWHEIGHT:
-        if cube['dir'] == DOWNLEFT:
-            cube['dir'] = UPLEFT
-        if cube['dir'] == DOWNRIGHT:
-            cube['dir'] = UPRIGHT
+        cube['dir'] = UP
     if cube['rect'].left < 0:
-            if cube['dir'] == DOWNLEFT:
-                cube['dir'] = DOWNRIGHT
-            if cube['dir'] == UPLEFT:
-                cube['dir'] = UPRIGHT
+        cube['dir'] = RIGHT
     if cube['rect'].right > WINDOWWIDTH:
-            if cube['dir'] == DOWNRIGHT:
-                cube['dir'] = DOWNLEFT
-            if cube['dir'] == UPRIGHT:
-                cube['dir'] = UPLEFT
+        cube['dir'] = LEFT
+
+
+def cube_move_like_a_snake():
+    """
+    This function makes a rectangle move like a snake, randomly turning at right angle.
+    New direction depends on a vector_choise
+    :return: None
+    """
+    vector_choise = random.randint(0, 20)
+    if cube['dir'] == DOWN and vector_choise == 0:
+            cube['dir'] = VECTOR[randint(0,3)]
+    if cube['dir'] == UP and vector_choise == 0:
+            cube['dir'] = VECTOR[randint(0,3)]
+    if cube['dir'] == LEFT and vector_choise == 0:
+            cube['dir'] = VECTOR[randint(0,3)]
+    if cube['dir'] == RIGHT and vector_choise == 0:
+            cube['dir'] = VECTOR[randint(0,3)]
 
 
 pygame.display.update()
@@ -176,12 +181,12 @@ while not finished:
                     balls.pop(balls.index(ball))
             for cube in cubes:
                 if cube['rect'].collidepoint(event.pos):
-                    score += 3
-                    print('+3')
+                    score += 5
+                    print('+5')
 #                   print(cube)
                     cubes.pop(cubes.index(cube))
-            choise = random.randint(0,1)
-            if choise == 0:
+            shape_choise = random.randint(0,1)
+            if shape_choise == 0:
                 new_cube()
             else:
                 new_ball()
@@ -190,8 +195,9 @@ while not finished:
         move_ball()
         pygame.draw.ellipse(screen, ball['color'], ball['rect'])
     for cube in cubes:
-        move_cube()
         cube['rect'].inflate_ip(-1, -1)
+        cube_move_like_a_snake()
+        move_cube()
         pygame.draw.rect(screen, cube['color'], cube['rect'])
     pygame.display.update()
 
