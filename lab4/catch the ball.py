@@ -173,11 +173,10 @@ while not finished:
     for event in pygame.event.get():
         if event.type == QUIT:
             finished = True
-        elif event.type == pygame.MOUSEBUTTONDOWN:  # если нажата кнопка мыши
-            print('Click!')  # печать слова Click в консоли # печать координат текущего мяча
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            print('Click!')
             event.x, event.y = event.pos  # получение координат клика мыши
             for ball in balls:
-                # click_ball()
                 if math.sqrt((event.x - ball['rect'].centerx) ** 2 +
                              (event.y - ball['rect'].centery) ** 2) < 0.5 * ball['rect'].width:
                     score += 1
@@ -187,7 +186,6 @@ while not finished:
                 if cube['rect'].collidepoint(event.pos):
                     score += 5
                     print('+5')
-                    #                   print(cube)
                     cubes.pop(cubes.index(cube))
             shape_choise = random.randint(0, 1)
             if shape_choise == 0:
