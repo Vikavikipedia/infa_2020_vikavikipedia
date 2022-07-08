@@ -5,7 +5,6 @@ import math
 from random import randint
 from pygame.locals import *
 
-
 pygame.init()
 
 FPS = 10
@@ -82,24 +81,16 @@ def move_ball():
     """
     if ball['dir'] == DOWNLEFT:
         ball['rect'].left -= MOVESPEED
-        ball['x'] += MOVESPEED
         ball['rect'].top += MOVESPEED
-        ball['y'] -= MOVESPEED
     if ball['dir'] == DOWNRIGHT:
         ball['rect'].left += MOVESPEED
-        ball['x'] -= MOVESPEED
         ball['rect'].top += MOVESPEED
-        ball['y'] -= MOVESPEED
     if ball['dir'] == UPLEFT:
         ball['rect'].left -= MOVESPEED
-        ball['x'] += MOVESPEED
         ball['rect'].top -= MOVESPEED
-        ball['y'] += MOVESPEED
     if ball['dir'] == UPRIGHT:
         ball['rect'].left += MOVESPEED
-        ball['x'] -= MOVESPEED
         ball['rect'].top -= MOVESPEED
-        ball['y'] += MOVESPEED
     if ball['rect'].top < 0:
         if ball['dir'] == UPLEFT:
             ball['dir'] = DOWNLEFT
@@ -160,18 +151,11 @@ def move_cube():
                 cube['dir'] = UPLEFT
 
 
-def click(event):
-    """"
-    Function prints values of variables
-    """
-    print(x, y, r, r)
-    print(a, b, w, h)
-
 pygame.display.update()    # отображение окна на экране
 clock = pygame.time.Clock()
 finished = False    # значение по умолчанию - программа продолжается
 
-#user_name = input('Enter user_name: ')    # ввод имени игрока
+user_name = input('Enter user_name: ')    # ввод имени игрока
 
 new_ball()
 new_cube()
@@ -183,25 +167,26 @@ while not finished:
         elif event.type == pygame.MOUSEBUTTONDOWN:  # если нажата кнопка мыши
             print('Click!')  # печать слова Click в консоли # печать координат текущего мяча
             event.x, event.y = event.pos  # получение координат клика мыши
-            click(event)
             for ball in balls:
-                if (math.sqrt((event.x - ball['x']) ** 2 + (event.y - ball['y']) ** 2) < ball['rad']):
+                #click_ball()
+                if math.sqrt((event.x - (ball['rect'].centerx)) ** 2 +
+                              (event.y - ball['rect'].centery) ** 2) < 0.5 * ball['rect'].width:
                     score += 1
-                    print('score:', score)
-#                    print(ball)
+                    print('x: ', int(ball['x']), 'y: ', int(ball['y']))
+                    print('+1')
                     balls.pop(balls.index(ball))
             for cube in cubes:
-                if ((event.x < cube['x'] or event.x > (cube['x']+cube['w'])) and
-                        (event.y > cube['y'] or event.y < (cube['y']-cube['h']))):
+                if ((cube['rect'].left < event.x < cube['rect'].right) and
+                        cube['rect'].top < event.y < (cube['rect'].bottom)):
                     score += 3
-                    print('score:', score)
-#                    print(cube)
+                    print('+3')
+#                   print(cube)
                     cubes.pop(cubes.index(cube))
             choise = random.randint(0,1)
             if choise == 0:
-                new_ball()
-            else:
                 new_cube()
+            else:
+                new_ball()
     screen.fill(BLACK)
     for ball in balls:
         move_ball()
@@ -213,8 +198,8 @@ while not finished:
 
 print('Total score:', score)
 Total_score = str(score)
-#output_score = open('Player table.txt', 'a')
-#string = [user_name, ' - ', Total_score, ' points', '\n']
-#output_score.writelines(string)
-#output_score.close()
+output_score = open('Player table.txt', 'a')
+string = [user_name, ' - ', Total_score, ' points', '\n']
+output_score.writelines(string)
+output_score.close()
 pygame.quit()

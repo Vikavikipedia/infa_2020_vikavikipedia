@@ -14,6 +14,8 @@ for n in range(0,2):
         choise = input('y or n?\n')
         if choise == 'y':
             print(ball)
+            print('x: ', ball['x'])
+            print('y: ', ball['y'])
             balls.pop(balls.index(ball))
             print('deleted №', i, ': ', balls)
         i += 1

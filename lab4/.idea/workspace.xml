@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a246c030-ba3f-4573-9e07-e059c9f8fd8b" name="Changes" comment="Made some moving balls that change their direction when they collide with the screen borders and if you clik on a ball, it will vanish. But this function works bad">
+    <list default="true" id="a246c030-ba3f-4573-9e07-e059c9f8fd8b" name="Changes" comment="Made some moving balls and cubes that change their direction when they collide with the screen borders and if you click on it, it will vanish. But this function works bad">
       <change afterPath="$PROJECT_DIR$/homework example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/list popping try.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab3/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/catch the ball.py" beforeDir="false" afterPath="$PROJECT_DIR$/catch the ball.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lect4.py" beforeDir="false" afterPath="$PROJECT_DIR$/lect4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list popping try.py" beforeDir="false" afterPath="$PROJECT_DIR$/list popping try.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657196664506</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Made some moving balls and cubes that change their direction when they collide with the screen borders and if you click on it, it will vanish. But this function works bad">
+      <created>1657205501367</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1657205501367</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -262,7 +269,8 @@
     <MESSAGE value="Made three moving balls that change their direction when they collide with the screen borders" />
     <MESSAGE value="Made some moving balls that change their direction when they collide with the screen borders" />
     <MESSAGE value="Made some moving balls that change their direction when they collide with the screen borders and if you clik on a ball, it will vanish. But this function works bad" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made some moving balls that change their direction when they collide with the screen borders and if you clik on a ball, it will vanish. But this function works bad" />
+    <MESSAGE value="Made some moving balls and cubes that change their direction when they collide with the screen borders and if you click on it, it will vanish. But this function works bad" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made some moving balls and cubes that change their direction when they collide with the screen borders and if you click on it, it will vanish. But this function works bad" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
