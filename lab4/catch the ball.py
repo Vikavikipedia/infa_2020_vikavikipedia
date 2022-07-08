@@ -151,11 +151,11 @@ def move_cube():
                 cube['dir'] = UPLEFT
 
 
-pygame.display.update()    # отображение окна на экране
+pygame.display.update()
 clock = pygame.time.Clock()
-finished = False    # значение по умолчанию - программа продолжается
+finished = False
 
-user_name = input('Enter user_name: ')    # ввод имени игрока
+user_name = input('Enter user_name: ')
 
 new_ball()
 new_cube()
@@ -172,7 +172,6 @@ while not finished:
                 if math.sqrt((event.x - (ball['rect'].centerx)) ** 2 +
                               (event.y - ball['rect'].centery) ** 2) < 0.5 * ball['rect'].width:
                     score += 1
-                    print('x: ', int(ball['x']), 'y: ', int(ball['y']))
                     print('+1')
                     balls.pop(balls.index(ball))
             for cube in cubes:
