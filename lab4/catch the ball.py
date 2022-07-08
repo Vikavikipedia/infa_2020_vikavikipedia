@@ -38,6 +38,7 @@ COLORS = [RED, BLUE, YELLOW, GREEN, MAGENTA, CYAN]
 balls = []
 cubes = []
 
+
 def new_ball():
     """
     Function draws a new ball and appends it to the list of balls
@@ -53,9 +54,10 @@ def new_ball():
     y = randint(100, 500)
     r = randint(10, 100)
     color = COLORS[randint(0, 5)]
-    direction = DIRECTIONS[randint(0,3)]
+    direction = DIRECTIONS[randint(0, 3)]
     ball = dict(rect=pygame.Rect(x, y, r, r), color=color, dir=direction)
     balls.append(ball)
+
 
 def new_cube():
     """
@@ -74,9 +76,10 @@ def new_cube():
     w = randint(10, 100)
     h = randint(10, 100)
     cube_color = COLORS[randint(0, 5)]
-    vector = VECTOR[randint(0,3)]
+    vector = VECTOR[randint(0, 3)]
     cube = dict(rect=pygame.Rect(a, b, w, h), color=cube_color, dir=vector)
     cubes.append(cube)
+
 
 def move_ball():
     """
@@ -106,15 +109,16 @@ def move_ball():
         if ball['dir'] == DOWNRIGHT:
             ball['dir'] = UPRIGHT
     if ball['rect'].left < 0:
-            if ball['dir'] == DOWNLEFT:
-                ball['dir'] = DOWNRIGHT
-            if ball['dir'] == UPLEFT:
-                ball['dir'] = UPRIGHT
+        if ball['dir'] == DOWNLEFT:
+            ball['dir'] = DOWNRIGHT
+        if ball['dir'] == UPLEFT:
+            ball['dir'] = UPRIGHT
     if ball['rect'].right > WINDOWWIDTH:
-            if ball['dir'] == DOWNRIGHT:
-                ball['dir'] = DOWNLEFT
-            if ball['dir'] == UPRIGHT:
-                ball['dir'] = UPLEFT
+        if ball['dir'] == DOWNRIGHT:
+            ball['dir'] = DOWNLEFT
+        if ball['dir'] == UPRIGHT:
+            ball['dir'] = UPLEFT
+
 
 def move_cube():
     """
@@ -122,13 +126,13 @@ def move_cube():
     :return: None
     """
     if cube['dir'] == DOWN:
-            cube['rect'].top += 2 * MOVESPEED
+        cube['rect'].top += 2 * MOVESPEED
     if cube['dir'] == UP:
-            cube['rect'].top -= 2 * MOVESPEED
+        cube['rect'].top -= 2 * MOVESPEED
     if cube['dir'] == LEFT:
-            cube['rect'].left -= 2*MOVESPEED
+        cube['rect'].left -= 2 * MOVESPEED
     if cube['dir'] == RIGHT:
-            cube['rect'].left += 2*MOVESPEED
+        cube['rect'].left += 2 * MOVESPEED
     if cube['rect'].top < 0:
         cube['dir'] = DOWN
     if cube['rect'].bottom > WINDOWHEIGHT:
@@ -147,13 +151,13 @@ def cube_move_like_a_snake():
     """
     vector_choise = random.randint(0, 20)
     if cube['dir'] == DOWN and vector_choise == 0:
-            cube['dir'] = VECTOR[randint(0,3)]
+        cube['dir'] = VECTOR[randint(0, 3)]
     if cube['dir'] == UP and vector_choise == 0:
-            cube['dir'] = VECTOR[randint(0,3)]
+        cube['dir'] = VECTOR[randint(0, 3)]
     if cube['dir'] == LEFT and vector_choise == 0:
-            cube['dir'] = VECTOR[randint(0,3)]
+        cube['dir'] = VECTOR[randint(0, 3)]
     if cube['dir'] == RIGHT and vector_choise == 0:
-            cube['dir'] = VECTOR[randint(0,3)]
+        cube['dir'] = VECTOR[randint(0, 3)]
 
 
 pygame.display.update()
@@ -173,9 +177,9 @@ while not finished:
             print('Click!')  # печать слова Click в консоли # печать координат текущего мяча
             event.x, event.y = event.pos  # получение координат клика мыши
             for ball in balls:
-                #click_ball()
-                if math.sqrt((event.x - (ball['rect'].centerx)) ** 2 +
-                              (event.y - ball['rect'].centery) ** 2) < 0.5 * ball['rect'].width:
+                # click_ball()
+                if math.sqrt((event.x - ball['rect'].centerx) ** 2 +
+                             (event.y - ball['rect'].centery) ** 2) < 0.5 * ball['rect'].width:
                     score += 1
                     print('+1')
                     balls.pop(balls.index(ball))
@@ -183,9 +187,9 @@ while not finished:
                 if cube['rect'].collidepoint(event.pos):
                     score += 5
                     print('+5')
-#                   print(cube)
+                    #                   print(cube)
                     cubes.pop(cubes.index(cube))
-            shape_choise = random.randint(0,1)
+            shape_choise = random.randint(0, 1)
             if shape_choise == 0:
                 new_cube()
             else:
