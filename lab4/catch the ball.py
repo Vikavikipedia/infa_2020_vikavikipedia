@@ -175,8 +175,7 @@ while not finished:
                     print('+1')
                     balls.pop(balls.index(ball))
             for cube in cubes:
-                if ((cube['rect'].left < event.x < cube['rect'].right) and
-                        cube['rect'].top < event.y < (cube['rect'].bottom)):
+                if cube['rect'].collidepoint(event.pos):
                     score += 3
                     print('+3')
 #                   print(cube)
@@ -192,6 +191,7 @@ while not finished:
         pygame.draw.ellipse(screen, ball['color'], ball['rect'])
     for cube in cubes:
         move_cube()
+        cube['rect'].inflate_ip(-1, -1)
         pygame.draw.rect(screen, cube['color'], cube['rect'])
     pygame.display.update()
 
