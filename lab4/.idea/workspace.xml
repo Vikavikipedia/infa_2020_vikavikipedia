@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a246c030-ba3f-4573-9e07-e059c9f8fd8b" name="Changes" comment="Now rectangles move like a snake. They randomly change their direction and the new direction depends on a vector_choise">
+    <list default="true" id="a246c030-ba3f-4573-9e07-e059c9f8fd8b" name="Changes" comment="Really final version">
+      <change afterPath="$PROJECT_DIR$/catch the ball ООП.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/homework example.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/.idea/lab5.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/.idea/lib.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/house.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lect7.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lib.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab8/lect8 example1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab8/lect8 example2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab8/lect8 example3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab8/my_colors" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab3/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Player table.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Player table.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catch the ball.py" beforeDir="false" afterPath="$PROJECT_DIR$/catch the ball.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lect4.py" beforeDir="false" afterPath="$PROJECT_DIR$/lect4.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,37 +52,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Python.catch the ball">
-    <configuration name="Ex 1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="lab4" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Documents/Python/PyCharm/Хирьянов.Python/Lect1" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$USER_HOME$/Documents/Python/PyCharm/Хирьянов.Python/Lect1/Ex 1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+}</component>
+  <component name="RunManager" selected="Python.catch the ball ООП">
     <configuration name="book example" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="lab4" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -80,6 +75,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/book example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="catch the ball ООП" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="lab4" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/catch the ball ООП.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -174,11 +190,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.catch the ball ООП" />
         <item itemvalue="Python.catch the ball" />
         <item itemvalue="Python.list popping try" />
         <item itemvalue="Python.book example" />
         <item itemvalue="Python.movind ball try" />
-        <item itemvalue="Python.Ex 1" />
       </list>
     </recent_temporary>
   </component>
@@ -275,7 +291,28 @@
       <option name="project" value="LOCAL" />
       <updated>1657292504789</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Final version">
+      <created>1657293809692</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1657293809692</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Really final version">
+      <created>1657308846801</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1657308846801</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Really final version">
+      <created>1657368622079</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1657368622079</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -302,7 +339,9 @@
     <MESSAGE value="Made some moving balls and cubes that change their direction when they collide with the screen borders and if you click on it, it will vanish. The ser name and score are stored in a file" />
     <MESSAGE value="Now rectangles shrink" />
     <MESSAGE value="Now rectangles move like a snake. They randomly change their direction and the new direction depends on a vector_choise" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now rectangles move like a snake. They randomly change their direction and the new direction depends on a vector_choise" />
+    <MESSAGE value="Final version" />
+    <MESSAGE value="Really final version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Really final version" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
